@@ -1,21 +1,26 @@
 {
   "kind": "collectionType",
-  "collectionName": "movies",
+  "collectionName": "genres",
   "info": {
-    "name": "movie",
+    "name": "Genre",
     "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
-    "Title": {
+    "genre": {
       "type": "string"
     },
-    "brief": {
-      "type": "text"
+    "movies": {
+      "collection": "movie",
+      "via": "genres",
+      "dominant": true
+    },
+    "description": {
+      "type": "richtext"
     },
     "cover": {
       "model": "file",
@@ -27,15 +32,6 @@
       ],
       "plugin": "upload",
       "required": false
-    },
-    "tags": {
-      "collection": "tag",
-      "via": "movies",
-      "dominant": true
-    },
-    "genres": {
-      "via": "movies",
-      "collection": "genre"
     }
   }
 }
