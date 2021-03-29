@@ -8,6 +8,14 @@ module.exports = ({env}) => ({
     },
   },
   email: {
-    provider: "console",
+    provider: 'sendgrid',
+    providerOptions: {
+      apiKey: env('SENDGRID_API_KEY'),
+    },
+    settings: {
+      defaultFrom: 'agn.j.herod@gmail.com',
+      defaultReplyTo: 'agn.j.herod@gmail.com',
+      testAddress: 'agn.j.herod@gmail.com',
+    },
   }
 });
